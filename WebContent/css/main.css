@@ -1,0 +1,95 @@
+@charset "UTF-8";
+:root{
+	--text-color:#f0f4f5;
+}
+body{
+	margin:0;
+	font-family: 'Source Sans Pro';
+}
+a{
+	text-decoration: none;
+	color:var(--text-color);
+}
+input{
+	cursor:pointer;
+}
+.container{
+	display:inline;
+	display:grid;
+	grid-template-columns: repeat(9,1fr);
+	grid-gap:1rem;
+	justify-content: space-between;
+	align-items: center;
+	background-color:#263343;
+	padding:8px 12px;
+  	position: fixed; 
+  	background-color: rgba(38,51,67,0.5);
+  	width:100%;
+}
+.logo{
+	color:var(--text-color);
+	border:0px;
+}
+
+.item{
+	display: flex;
+	list-style: none;
+	padding-left:0;
+}
+
+.item li{
+	padding: 8px 12px;
+}
+.item li:hover{
+	background-color: #d49466;
+	border-radius:4px;
+}
+.item a{
+	padding: 8px 12px;
+}
+.item a:hover{
+	background-color: #d49466;
+	border-radius:4px;
+}
+.menu li:hover{
+	background-color: #d49466;
+	border-radius:4px;
+}
+
+.login{
+	color:var(--text-color);
+	display:flex;
+	list-style: none;
+	padding-left:0;
+	padding-right:20px;
+}
+.login li{
+	padding: 8px 12px;
+}
+input::placeholder{
+	padding-left:20px;
+}
+/* //재운이 오빠가 한 것 */
+
+ul,li {margin:0; padding:0;}
+@media screen and (max-width: 768px){
+	.navbar{
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.menu{
+		flex-direction: column;
+		align-items: center;
+		width:100%;
+		padding: 8px 24px;
+	}
+	.menu li{
+		width:100%;
+		text-align: center;
+	}
+	.login{
+		justify-content: center;
+		width:100%;
+	
+	}
+}
