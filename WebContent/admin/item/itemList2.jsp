@@ -235,15 +235,16 @@
                 </div>
 
                 <div class="row">
+                	<c:set var="number" value="${number}"/>
+                    <c:forEach var="list" items="${v}" varStatus="status">
+                    
                     <!-- Single Product Area -->
                     <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                    
-                    <c:set var="number" value="${number}"/>
-                    <c:forEach var="list" items="${v}" varStatus="status">
                         <div class="single-product-wrapper">
+                    
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="/img/product-img/product1.jpg" alt="">
+                                <img src="/upload/${list.itemFile_s}" alt="" width="30" height="30">
                                 <!-- Hover Thumb -->
                                 <img class="hover-img" src="/upload/${list.itemFile_s}" alt="">
                             </div>
@@ -273,9 +274,10 @@
                                 </div>
                             </div>
                         </div>
-                    <c:set var="number" value="${number-1}"/>    
-                    </c:forEach>
                     </div>
+                    
+                    <c:set var="number" value="${number-1}"/>    
+	                </c:forEach>
                 </div>
 
                 <div class="row">
