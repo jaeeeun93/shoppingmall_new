@@ -24,7 +24,7 @@ import Model.ItemBean;
 @WebServlet("/admin/item/cart_insert.do")
 @MultipartConfig(
 		fileSizeThreshold=0,
-		location = "C:\\jsp\\Project02\\WebContent\\upload"
+		location = "C:\\jsp\\shoppingmall_new\\WebContent\\upload"
 		)
 	public class CartInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;

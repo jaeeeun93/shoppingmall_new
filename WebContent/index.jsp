@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<script src="https://kit.fontawesome.com/d01610d97f.js" crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,9 +83,9 @@ String session_level = (String)session.getAttribute("level");
             <nav class="amado-nav">
                 <ul>
                     <li class="active"><a href="/index.jsp">Home</a></li>
-                    <li><a href="/shop.jsp">Shop</a></li>
+                    <li><a href="/admin/item/list.do">Shop</a></li>
                     <li><a href="/product-details.jsp">Product</a></li>
-                    <li><a href="/cart.jsp">Cart</a></li>
+                    <li><a href="/admin/item/cartlist.do?id=<%=session_id%>">Cart</a></li>
                     <li><a href="/checkout.jsp">Checkout</a></li>
                 </ul>
             </nav>
@@ -93,7 +93,7 @@ String session_level = (String)session.getAttribute("level");
             <%if(session_level != null && session_level.equals("10")){ %>
             
 	            <div class="amado-btn-group mt-30 mb-100">
-	                <a href="#" class="btn amado-btn mb-15">관리자</a>
+	                <a href="/admin/index.jsp" class="btn amado-btn mb-15">관리자</a>
 	                <a href="#" class="btn amado-btn active">로그아웃</a>
 	            </div>
             
@@ -134,26 +134,24 @@ String session_level = (String)session.getAttribute("level");
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/shop.jsp">
+                    <a href="">
                         <img src="/img/bg-img/1.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>From $180</p>
-                            <h4>Modern Chair</h4>
+                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/shop.jsp">
+                    <a href="/admin/coupon/couponMake.do?coupon=5000" onclick="return confirm('쿠폰을 발급 받으시겠습니까?');">
                         <img src="/img/bg-img/2.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>From $180</p>
-                            <h4>Minimalistic Plant Pot</h4>
+                            <p>쿠폰받기</p>
                         </div>
                     </a>
                 </div>
@@ -165,8 +163,7 @@ String session_level = (String)session.getAttribute("level");
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>From $180</p>
-                            <h4>Modern Chair</h4>
+                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
@@ -178,21 +175,19 @@ String session_level = (String)session.getAttribute("level");
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>From $180</p>
-                            <h4>Night Stand</h4>
+                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/shop.jsp">
+                    <a href="/category.do?category=campingtable">
                         <img src="/img/bg-img/5.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>From $18</p>
-                            <h4>Plant Pot</h4>
+                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
@@ -204,47 +199,43 @@ String session_level = (String)session.getAttribute("level");
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>From $320</p>
-                            <h4>Small Table</h4>
+                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/shop.jsp">
-                        <img src="/img/bg-img/7.jpg" alt="">
+                    <a href="/Roulette.do">
+                        <img src="/img/bg-img/7.png" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>From $318</p>
-                            <h4>Metallic Chair</h4>
+                            <p>룰렛돌리기</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/shop.jsp">
+                    <a href="/category.do?category=ax">
                         <img src="/img/bg-img/8.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>From $318</p>
-                            <h4>Modern Rocking Chair</h4>
+                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/shop.jsp">
+                    <a href="/category.do?category=hammock">
                         <img src="/img/bg-img/9.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>From $318</p>
-                            <h4>Home Deco</h4>
+                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>

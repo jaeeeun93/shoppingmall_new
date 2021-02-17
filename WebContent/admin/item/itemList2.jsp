@@ -244,7 +244,7 @@
                     
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="/upload/${list.itemFile_s}" alt="" width="30" height="30">
+                                <a href="/admin/item/info.do?code=${list.itemCode}&name=${list.itemName }"><img src="/upload/${list.itemFile_s}" alt=""></a>
                                 <!-- Hover Thumb -->
                                 <img class="hover-img" src="/upload/${list.itemFile_s}" alt="">
                             </div>
@@ -262,11 +262,29 @@
                                 <!-- Ratings & Cart -->
                                 <div class="ratings-cart text-right">
                                     <div class="ratings">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                       <c:choose>
+											<c:when test="${list.starPoint == 0}">
+						 						<span style="color:orange">☆☆☆☆☆(0)</span>
+						 					</c:when>
+						 					<c:when test="${list.starPoint / list.pnum eq 5}">
+						 						<span style="color:orange">★★★★★(${list.pnum })</span>
+						 					</c:when>
+						 					<c:when test="${list.starPoint / list.pnum >=4}">
+						 						<span style="color:orange">★★★★☆(${list.pnum})</span>
+						 					</c:when>
+											<c:when test="${list.starPoint / list.pnum >=3}">
+						 						<span style="color:orange">★★★☆☆(${list.pnum })</span>
+						 					</c:when>
+						 					<c:when test="${list.starPoint / list.pnum >=2}">
+						 						<span style="color:orange">★★☆☆☆(${list.pnum })</span>
+						 					</c:when>
+						 					<c:when test="${list.starPoint / list.pnum >=1}">
+						 						<span style="color:orange">★☆☆☆☆(${list.pnum })</span>
+						 					</c:when>
+						 					<c:otherwise>
+						 						<span style="color:orange">☆☆☆☆☆(0개의 리뷰)</span>
+						 					</c:otherwise>
+										</c:choose>
                                     </div>
                                     <div class="cart">
                                         <a href="/cart.jsp" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="/img/core-img/cart.png" alt=""></a>
@@ -285,64 +303,58 @@
                         <!-- Pagination -->
                         <nav aria-label="navigation">
                             <ul class="pagination justify-content-end mt-50">
-                                <li class="page-item active"><a class="page-link" href="#">01.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">04.</a></li>
+                            <!-- 페이징 처리 -->		
+								<c:if test="${count  > 0}">
+									<c:set var="pageCount" value="${count / pageSize + (count % pageSize == 0 ? 0 : 1) }" />
+									<fmt:parseNumber var="pageCount" value="${pageCount }" integerOnly="true"/>
+									
+									<!-- 2개의 변수 초기화 -->
+									<c:set var="startPage" value="${1 }"/>
+									<c:set var="pageBlock" value="${3 }"/>
+									
+									<!-- 다음 페이지 블럭이 존재 할 경우 startPage 값 변경 부분 -->
+									<c:if test="${pageNum > pageBlock }">
+										<!-- 결과 값을 정수형으로 리턴 받아야 하기 때문에 fmt 처리 -->
+										<fmt:parseNumber var="result" value="${pageNum / pageBlock - (pageNum % pageBlock == 0 ? 1 : 0) }" integerOnly="true"/>
+										<c:set var="startPage" value="${result * pageBlock + 1 }"/>
+									</c:if>
+									
+									<!-- endPage 설정 -->
+									<c:set var="endPage" value="${startPage + pageBlock - 1 }"/>
+									<c:if test="${endPage > pageCount }">
+										<c:set var="endPage" value="${pageCount }"/>
+									</c:if>
+									
+									<!-- 이전 링크 -->
+									<c:if test="${startPage > pageBlock }">
+										<li class="page-item"><a class="page-link" href="/admin/item/list.do?pageNum=${startPage - pageBlock }">&lt;</a></li>
+									</c:if>
+									
+									<!-- 페이지 출력 -->
+									<c:forEach var="i" begin="${startPage }" end="${endPage }">
+										<li class="page-item"><a class="page-link" href="/admin/item/list.do?pageNum=${i }">[${i }]</a></li>
+									</c:forEach>
+									
+									<!-- 다음 링크 -->
+									<c:if test="${endPage < pageCount}">
+										<li class="page-item"><a class="page-link" href="/admin/item/list.do?pageNum=${startPage + pageBlock}">&gt;</a></li>
+									</c:if>
+								</c:if>
                             </ul>
                         </nav>
                     </div>
                 </div>
                 
-                <!-- 페이징 처리 -->		
-<c:if test="${count  > 0}">
-	<c:set var="pageCount" value="${count / pageSize + (count % pageSize == 0 ? 0 : 1) }" />
-	<fmt:parseNumber var="pageCount" value="${pageCount }" integerOnly="true"/>
-	
-	<!-- 2개의 변수 초기화 -->
-	<c:set var="startPage" value="${1 }"/>
-	<c:set var="pageBlock" value="${3 }"/>
-	
-	<!-- 다음 페이지 블럭이 존재 할 경우 startPage 값 변경 부분 -->
-	<c:if test="${pageNum > pageBlock }">
-		<!-- 결과 값을 정수형으로 리턴 받아야 하기 때문에 fmt 처리 -->
-		<fmt:parseNumber var="result" value="${pageNum / pageBlock - (pageNum % pageBlock == 0 ? 1 : 0) }" integerOnly="true"/>
-		<c:set var="startPage" value="${result * pageBlock + 1 }"/>
-	</c:if>
-	
-	<!-- endPage 설정 -->
-	<c:set var="endPage" value="${startPage + pageBlock - 1 }"/>
-	<c:if test="${endPage > pageCount }">
-		<c:set var="endPage" value="${pageCount }"/>
-	</c:if>
-	
-	<!-- 이전 링크 -->
-	<c:if test="${startPage > pageBlock }">
-		<a href="/admin/item/list.do?pageNum=${startPage - pageBlock }">[이전]</a>
-	</c:if>
-	
-	<!-- 페이지 출력 -->
-	<c:forEach var="i" begin="${startPage }" end="${endPage }">
-		<a href="/admin/item/list.do?pageNum=${i }">[${i }]</a>
-	</c:forEach>
-	
-	<!-- 다음 링크 -->
-	<c:if test="${endPage < pageCount}">
-		<a href="/admin/item/list.do?pageNum=${startPage + pageBlock}">[다음]</a>
-	</c:if>
-</c:if>
-		</td>
-	</tr>
-</table>
+
+
 </div>
                 
                 
                 
                 
                 
-            </div>
-        </div>
-    </div>
+</div>
+</div>
     <!-- ##### Main Content Wrapper End ##### -->
 
     <!-- ##### Newsletter Area Start ##### -->

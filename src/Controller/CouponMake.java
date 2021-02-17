@@ -75,6 +75,7 @@ public class CouponMake extends HttpServlet {
 		dao.makeCoupon(coupon,session_id, signdate, validate);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("/");
+		
 		dis.forward(request, response);
 		}else{
 			response.setContentType("text/html; charset=UTF-8");
