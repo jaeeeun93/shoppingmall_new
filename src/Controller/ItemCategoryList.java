@@ -97,7 +97,7 @@ public class ItemCategoryList extends HttpServlet {
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageNum", pageNum);
 		
-		RequestDispatcher dis = request.getRequestDispatcher("/admin/item/itemList.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("/admin/item/itemList2.jsp");
 		dis.forward(request, response);
 	}
 
