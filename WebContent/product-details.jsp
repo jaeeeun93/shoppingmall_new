@@ -1,4 +1,166 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.net.URLDecoder"%>
+<%@ page import="java.net.URI"%>
+<!-- css적용 -->
+<link rel="stylesheet" href="/css/main.css">
+<!-- 폰트 적용 -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+
+<%
+Date today = new Date();
+SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+String day = (String)(sdf.format(today));
+
+String session_id = (String)session.getAttribute("id");
+String session_name = (String)session.getAttribute("name");
+String session_level = (String)session.getAttribute("level");
+String session_item = (String)(sdf.format(today));
+
+String session_guest = (String)session.getAttribute("session_guest");
+if(session_guest == null){
+	session.setAttribute("session_guest",day);
+}
+%>
+<% 
+    Class.forName("com.mysql.jdbc.Driver");
+	String url = "jdbc:mysql://localhost:3306/camp?serverTimezone=UTC";
+	String user="root";
+	String password="1111";
+    
+    request.setCharacterEncoding("utf-8");
+	
+    String id2 = session_id;
+    String sql = "select count(*) as count from cart where id = '"+id2+"'";
+    
+    Connection conn = DriverManager.getConnection(url, user, password);
+	Statement stmt = conn.createStatement();
+	ResultSet rs = stmt.executeQuery(sql);
+	
+	int total = 0;
+	while (rs.next()) {
+		total= rs.getInt("count");
+		// db에서 읽은 총 장바구니 상품 수 넣음
+	}
+
+	rs.close();
+	stmt.close();
+	conn.close();	// 총 주문 상품 수 끝
+	
+	
+	String id3 = session_id;
+    String sql2 = "select count(*) as count from order2 where id = '"+id3+"'";
+    
+    Connection conn2 = DriverManager.getConnection(url, user, password);
+	Statement stmt2 = conn2.createStatement();
+	ResultSet rs2 = stmt2.executeQuery(sql2);
+	
+	int total2 = 0;
+	while (rs2.next()) {
+		total2= rs2.getInt("count");
+		// db에서 읽은 총 주문 상품 수 넣음
+	}
+
+	rs2.close();
+	stmt2.close();
+	conn2.close();	// 총 장바구니 상품 수 끝
+	
+	
+	// 받은 쪽지 개수 카운팅
+	String id4 = session_id;
+    String sql4 = "select count(*) as count from message where recv_id = '"+id4+"' and recv_del = 0";
+    
+    Connection conn4 = DriverManager.getConnection(url, user, password);
+	Statement stmt4 = conn4.createStatement();
+	ResultSet rs4 = stmt4.executeQuery(sql4);
+	
+	int total4 = 0;
+	while (rs4.next()) {
+		total4= rs4.getInt("count");
+		
+	}
+
+	rs4.close();
+	stmt4.close();
+	conn4.close();
+	
+	// 보낸 쪽지 개수 카운팅
+	String id5 = session_id;
+    String sql5 = "select count(*) as count from message where send_id = '"+id5+"' and send_del = 0";
+    
+    Connection conn5 = DriverManager.getConnection(url, user, password);
+	Statement stmt5 = conn5.createStatement();
+	ResultSet rs5 = stmt5.executeQuery(sql5);
+	
+	int total5 = 0;
+	while (rs5.next()) {
+		total5= rs5.getInt("count");
+		
+	}
+
+	rs5.close();
+	stmt5.close();
+	conn5.close();
+	
+	// 찜한 상품 개수 카운팅
+	String id6 = session_id;
+    String sql6 = "select count(*) as count from jjim where id = '"+id6+"' and jjim = 1";
+    
+    Connection conn6 = DriverManager.getConnection(url, user, password);
+	Statement stmt6 = conn6.createStatement();
+	ResultSet rs6 = stmt6.executeQuery(sql6);
+	
+	int total6 = 0;
+	while (rs6.next()) {
+		total6= rs6.getInt("count");
+		
+	}
+
+	rs6.close();
+	stmt6.close();
+	conn6.close();
+	
+%>
+<%
+  request.setCharacterEncoding("UTF-8"); //받아올 데이터의 인코딩
+  String code = request.getParameter("code"); //리스트에서 썸네일 사진 클릭시 넘겨 준 코드값
+  String name = request.getParameter("name");
+%>
+
+<script>
+  function check() {
+    var id = "<%=session_id%>";
+    var level = "<%=session_level%>";
+    
+    if ( level == null) {
+      alert( '비회원은 장바구니 사용이 불가합니다' );
+      return false;
+    }
+    else{
+    	if(confirm('장바구니에 담으시겠습니까?')){
+    		
+    	}else{
+    		return false;
+    	} 
+    	
+    }
+    return true;
+  }
+</script>
+<script type="text/javascript">
+ window.history.forward();
+ function noBack(){window.history.forward();}
+</script>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,8 +276,10 @@
                         </nav>
                     </div>
                 </div>
-
+				
+				<form action="cart_insert.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
                 <div class="row">
+                <input type="hidden" name="cartFile_s" value="${info.itemFile_s}">
                     <div class="col-12 col-lg-7">
                         <div class="single_product_thumb">
                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
@@ -161,16 +325,35 @@
                                 <div class="line"></div>
                                 <p class="product-price">$180</p>
                                 <a href="product-details.jsp">
-                                    <h6>White Modern Chair</h6>
+                                    <h6><input name="itemName" value="${info.itemName }"></h6>
                                 </a>
                                 <!-- Ratings & Review -->
                                 <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
                                     <div class="ratings">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                       <c:choose>
+						 					<c:when test="${avg eq 5}">
+						 						<span style="color:orange">★★★★★(${avg })</span>
+						 					</c:when>
+						 					<c:when test="${avg >= 4}">
+						 						<span style="color:orange">★★★★☆(${avg })</span>
+						 					</c:when>
+											<c:when test="${avg >= 3}">
+						 						<span style="color:orange">★★★☆☆(${avg })</span>
+						 					</c:when>
+						 					<c:when test="${avg >= 2}">
+						 						<span style="color:orange">★★☆☆☆(${avg })</span>
+						 					</c:when>
+						 					<c:when test="${avg >= 1}">
+						 						<span style="color:orange">★☆☆☆☆(${avg })</span>
+						 					</c:when>
+						 					<c:otherwise>
+						 						<span style="color:orange">☆☆☆☆☆(${avg })</span>
+						 					</c:otherwise>
+										</c:choose>
+										${count}개의 상품평
+										<input type="hidden" name="itemCode" value="${info.itemCode}">
+										<input type="hidden" name="id" value="<%=session_id%>">
+										<input type="hidden" name="session" value="<%=session_guest%>">
                                     </div>
                                     <div class="review">
                                         <a href="#">Write A Review</a>
@@ -195,11 +378,13 @@
                                     </div>
                                 </div>
                                 <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
+                            	<input type="button"onclick="if(confirm('바로 구매 하시겠습니까?')){location.href='orderInfo.do?itemName=${info.itemName}&itemCode=${info.itemCode}&cartFile_s=${info.itemFile_s}&session=<%=session_guest%>&itemPrice=${info.itemPrice }&itemPoint=${info.itemPoint}'}" value="바로구매">
                             </form>
 
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
         <!-- Product Details Area End -->
@@ -284,15 +469,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="/js/popper.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <!-- Plugins js -->
-    <script src="js/plugins.js"></script>
+    <script src="/js/plugins.js"></script>
     <!-- Active js -->
-    <script src="js/active.js"></script>
+    <script src="/js/active.js"></script>
 
 </body>
 

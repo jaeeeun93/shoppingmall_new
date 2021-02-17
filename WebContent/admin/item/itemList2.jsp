@@ -110,13 +110,14 @@
                 <!--  Catagories  -->
                 <div class="catagories-menu">
                     <ul>
-                        <li><a href="/category.do?category=campingtable">테이블</a></li>
-                        <li><a href="/category.do?category=ax">손도끼</a></li>
+                        <li class="active"><a href="/admin/item/list.do">전체</a></li>
+                        <li><a href="/category.do?category=campingtable">캠핑테이블</a></li>
+                        <li><a href="/category.do?category=ax">손도끼/야전삽</a></li>
                         <li><a href="/category.do?category=sleepingbag">침낭</a></li>
                         <li><a href="/category.do?category=hammock">해먹</a></li>
-                        <li><a href="/category.do?category=etc">Etc</a></li>
-                        <li class="active"><a href="#">Chairs</a></li>
-                        <li><a href="#">Tables</a></li>
+                        <li><a href="/category.do?category=lantern">랜턴</a></li>
+                        <li><a href="/category.do?category=stove">난로</a></li>
+                        <li><a href="/category.do?category=etc">기타캠핑용품</a></li>
                     </ul>
                 </div>
             </div>
@@ -244,9 +245,9 @@
                     
                             <!-- Product Image -->
                             <div class="product-img">
-                                <a href="/admin/item/info.do?code=${list.itemCode}&name=${list.itemName }"><img src="/upload/${list.itemFile_s}" alt=""></a>
+                                <a href="/admin/item/info.do?code=${list.itemCode}&name=${list.itemName }"><img src="/upload/${list.itemFile}" alt=""></a>
                                 <!-- Hover Thumb -->
-                                <img class="hover-img" src="/upload/${list.itemFile_s}" alt="">
+                                <!-- <img class="hover-img" src="/upload/${list.itemFile}" alt=""> -->
                             </div>
 
                             <!-- Product Description -->

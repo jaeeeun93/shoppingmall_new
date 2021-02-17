@@ -134,7 +134,7 @@ String session_level = (String)session.getAttribute("level");
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="">
+                    <a href="/category.do?category=stove">
                         <img src="/img/bg-img/1.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -170,7 +170,7 @@ String session_level = (String)session.getAttribute("level");
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/shop.jsp">
+                    <a href="/category.do?category=lantern">
                         <img src="/img/bg-img/4.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -194,7 +194,7 @@ String session_level = (String)session.getAttribute("level");
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/shop.jsp">
+                    <a href="/category.do?category=etc">
                         <img src="/img/bg-img/6.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">

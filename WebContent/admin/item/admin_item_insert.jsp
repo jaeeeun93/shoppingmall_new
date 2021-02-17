@@ -31,9 +31,11 @@
 		<td>
 			<select name="category">
 		    	<option value="campingtable">캠핑테이블</option>
-		    	<option value="ax">캠핑손도끼</option>
+		    	<option value="ax">손도끼/야전삽</option>
 		    	<option value="sleepingbag">침낭</option>
 		    	<option value="hammock">해먹</option>
+		    	<option value="lantern">랜턴</option>
+		    	<option value="stove">난로</option>
 		    	<option value="etc">기타캠핑용품</option>
 		    </select>
 		</td>
