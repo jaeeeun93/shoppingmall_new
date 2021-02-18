@@ -20,6 +20,7 @@ public class ItemBean {
 	private String jjim;
 	private String category;
 	private String sold;
+	private String info;
 	
 	public int getItemUid() {
 		return itemUid;
@@ -134,6 +135,12 @@ public class ItemBean {
 	}
 	public void setSold(String sold) {
 		this.sold = sold;
+	}
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = info;
 	}
 	
 }

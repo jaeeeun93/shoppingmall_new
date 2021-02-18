@@ -20,7 +20,7 @@ public class ItemDAO {
 		dao.getCon();
 		
 		try {
-			String sql = "insert into item (itemCode,itemName,itemFile,itemFile_s,itemPrice,itemPoint,stock,itemDate,category) values(?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into item (itemCode,itemName,itemFile,itemFile_s,itemPrice,itemPoint,stock,itemDate,category,info) values(?,?,?,?,?,?,?,?,?,?)";
 			
 			pstmt = dao.conn.prepareStatement(sql);
 			
@@ -33,6 +33,7 @@ public class ItemDAO {
 			pstmt.setInt(7, bean.getStock());
 			pstmt.setString(8, bean.getItemDate());
 			pstmt.setString(9, bean.getCategory());
+			pstmt.setString(10, bean.getInfo());
 			
 			pstmt.executeUpdate();
 			
@@ -552,6 +553,7 @@ public class ItemDAO {
 				bean.setStock(rs.getInt("stock"));
 				bean.setItemDate(rs.getString("itemDate"));
 				bean.setSold(rs.getString("sold"));
+				bean.setInfo(rs.getString("info"));
 			}
 			
 		}catch(Exception e) {
@@ -1342,12 +1344,12 @@ public class ItemDAO {
 		}
 		return bean;
 	}
-	//게시글 수정
+	//상품 수정
 	public void updateItem(ItemBean bean) {
 		dao.getCon();
 		
 		try {
-			String sql = "update item set itemCode=?, itemName=?, itemPrice=?, itemPoint=?, stock=?, itemFile=?, itemFile_s=?, category=? where itemUid=? ";
+			String sql = "update item set itemCode=?, itemName=?, itemPrice=?, itemPoint=?, stock=?, itemFile=?, itemFile_s=?, category=?, info=? where itemUid=? ";
 									
 			pstmt = dao.conn.prepareStatement(sql);
 			
@@ -1359,7 +1361,8 @@ public class ItemDAO {
 			pstmt.setString(6, bean.getItemFile());
 			pstmt.setString(7, bean.getItemFile_s());
 			pstmt.setString(8, bean.getCategory());
-			pstmt.setInt(9, bean.getItemUid());
+			pstmt.setString(9, bean.getInfo());
+			pstmt.setInt(10, bean.getItemUid());
 		
 			pstmt.executeUpdate();
 			

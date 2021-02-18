@@ -20,7 +20,7 @@ import DAO.ItemDAO;
 import Model.ItemBean;
 
 @WebServlet("/admin/item/update.do")
-@MultipartConfig(fileSizeThreshold = 0, location = "C:\\jsp\\Project02\\WebContent\\upload")
+@MultipartConfig(fileSizeThreshold = 0, location = "C:\\jsp\\shoppingmall_new\\WebContent\\upload")
 public class ItemUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -64,7 +64,7 @@ public class ItemUpdate extends HttpServlet {
 			part.write(uploadItemFile); // 경로에 파일저장 처리부분
 
 			// 썸네일
-			String filePath = "C:\\JSP\\Pro002\\WebContent\\upload\\"; // 여기다가 \\ 붙이던지 밑에 file1 앞에 \\붙이던지
+			String filePath = "C:\\JSP\\shoppingmall_new\\WebContent\\upload\\"; // 여기다가 \\ 붙이던지 밑에 file1 앞에 \\붙이던지
 
 			String orgImg = filePath + uploadItemFile; // 원본 파일
 			thum_ItemFile = "thumb_" + uploadItemFile; // 썸네일 파일명
@@ -93,6 +93,7 @@ public class ItemUpdate extends HttpServlet {
 		bean.setStock(Integer.parseInt(request.getParameter("stock")));
 		bean.setCategory(request.getParameter("category"));
 		bean.setItemUid(Integer.parseInt(request.getParameter("itemUid")));
+		bean.setInfo(request.getParameter("info"));
 		
 		ItemDAO dao = new ItemDAO();
 		dao.updateItem(bean);

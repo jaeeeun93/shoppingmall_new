@@ -27,6 +27,10 @@
 		<td><input name="stock"></td>
 	</tr>
 	<tr>
+		<td>상품설명</td>
+		<td><input name="info"></td>
+	</tr>
+	<tr>
 		<td>카테고리</td>
 		<td>
 			<select name="category">

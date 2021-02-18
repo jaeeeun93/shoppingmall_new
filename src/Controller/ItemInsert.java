@@ -107,6 +107,7 @@ public class ItemInsert extends HttpServlet {
 		bean.setItemPrice(Integer.parseInt(request.getParameter("itemPrice")));
 		bean.setItemPoint(Integer.parseInt(request.getParameter("itemPoint")));
 		bean.setStock(Integer.parseInt(request.getParameter("stock")));
+		bean.setInfo(request.getParameter("info"));
 		bean.setItemDate(signdate);
 		bean.setCategory(request.getParameter("category"));
 

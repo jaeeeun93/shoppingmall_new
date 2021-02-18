@@ -314,10 +314,9 @@ if(session_guest == null){
                             <!-- Product Meta Data -->
                             <div class="product-meta-data">
                                 <div class="line"></div>
-                                <p class="product-price"><input name="itemPrice" value="${info.itemPrice }"></p>
+                                <p class="product-price"><input name="itemPrice" value="${info.itemPrice }" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;"></p>
                                 <a href="/product-details.jsp">
-                                    <h6><input name="itemName" value="${info.itemName }"></h6>
-                                    <input name="itemPoint" value="${info.itemPoint}" readonly size=3>포인트
+                                    <h6><input name="itemName" value="${info.itemName }" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;"></h6>
                                 </a>
                                 <!-- Ratings & Review -->
                                 <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
@@ -347,31 +346,24 @@ if(session_guest == null){
 										<input type="hidden" name="id" value="<%=session_id%>">
 										<input type="hidden" name="session" value="<%=session_guest%>">
                                     </div>
-                                    <div class="review">
-                                        <a href="#">Write A Review</a>
-                                    </div>
                                 </div>
                                 <!-- Avaiable -->
-                                <p class="avaibility"><i class="fa fa-circle"></i> In Stock</p>
                                 <input type="hidden" name="stock" value="${info.stock }">
                             </div>
 
                             <div class="short_overview my-5">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?</p>
+                            	<p>${info.info }</p>
                             </div>
 
                             <!-- Add to Cart Form -->
                             <form class="cart clearfix" method="post">
                                 <div class="cart-btn d-flex mb-50">
-                                    <p>Qty</p>
                                     <div class="quantity">
-                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
-                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
-                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
+                                        적립 포인트 <input class="qty-text" name="itemPoint" value="${info.itemPoint}" readonly size=3 style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
                                     </div>
                                 </div>
-                                <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
-                            	<input type="button"onclick="if(confirm('바로 구매 하시겠습니까?')){location.href='orderInfo.do?itemName=${info.itemName}&itemCode=${info.itemCode}&cartFile_s=${info.itemFile_s}&session=<%=session_guest%>&itemPrice=${info.itemPrice }&itemPoint=${info.itemPoint}'}" value="바로구매">
+                                <button type="submit" name="addtocart" value="5" class="btn amado-btn">장바구니 담기</button>
+                            	<button type="button" class="btn amado-btn" onclick="if(confirm('바로 구매 하시겠습니까?')){location.href='orderInfo.do?itemName=${info.itemName}&itemCode=${info.itemCode}&cartFile_s=${info.itemFile_s}&session=<%=session_guest%>&itemPrice=${info.itemPrice }&itemPoint=${info.itemPoint}'}">바로구매</button>
                             </form>
 
                         </div>
