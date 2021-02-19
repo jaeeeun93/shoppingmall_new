@@ -139,7 +139,6 @@ String session_level = (String)session.getAttribute("level");
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
@@ -151,19 +150,17 @@ String session_level = (String)session.getAttribute("level");
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>쿠폰받기</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/shop.jsp">
+                    <a href="/admin/item/list.do">
                         <img src="/img/bg-img/3.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
@@ -175,7 +172,6 @@ String session_level = (String)session.getAttribute("level");
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
@@ -187,7 +183,6 @@ String session_level = (String)session.getAttribute("level");
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
@@ -199,43 +194,39 @@ String session_level = (String)session.getAttribute("level");
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/Roulette.do">
+                	<a href="/category.do?category=ax">
                         <img src="/img/bg-img/7.png" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>룰렛돌리기</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/category.do?category=ax">
-                        <img src="/img/bg-img/8.jpg" alt="">
+					<a href="/Roulette.do">
+                        <img src="/img/bg-img/8.png" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="/category.do?category=hammock">
-                        <img src="/img/bg-img/9.jpg" alt="">
+                    <a href="/category.do?category=sleepingbag">
+                        <img src="/img/bg-img/9.png" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            <p>구매하기</p>
                         </div>
                     </a>
                 </div>

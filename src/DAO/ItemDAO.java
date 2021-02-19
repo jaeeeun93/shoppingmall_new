@@ -554,6 +554,9 @@ public class ItemDAO {
 				bean.setItemDate(rs.getString("itemDate"));
 				bean.setSold(rs.getString("sold"));
 				bean.setInfo(rs.getString("info"));
+				bean.setCategory(rs.getString("category"));
+				bean.setDetail1(rs.getString("detail1"));
+				bean.setDetail2(rs.getString("detail2"));
 			}
 			
 		}catch(Exception e) {

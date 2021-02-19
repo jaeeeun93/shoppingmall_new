@@ -259,10 +259,9 @@ if(session_guest == null){
                     <div class="col-12">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mt-50">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Furniture</a></li>
-                                <li class="breadcrumb-item"><a href="#">Chairs</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">white modern chair</li>
+                                <li class="breadcrumb-item"><a href="/admin/item/list.do">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/category.do?category=${info.category }">${info.category }</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">${info.itemName }</li>
                             </ol>
                         </nav>
                     </div>
@@ -275,34 +274,34 @@ if(session_guest == null){
                         <div class="single_product_thumb">
                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(/img/product-img/pro-big-1.jpg);">
+                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(/upload/${info.itemFile });">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(/img/product-img/pro-big-2.jpg);">
+                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(/upload/${info.detail1 });">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(/img/product-img/pro-big-3.jpg);">
+                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(/upload/${info.detail2 });">
                                     </li>
                                     <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(/img/product-img/pro-big-4.jpg);">
                                     </li>
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a class="gallery_img" href="/img/product-img/pro-big-1.jpg">
+                                        <a class="gallery_img" href="/upload/${info.itemFile }">
                                             <img name="itemFile" class="d-block w-100" src="/upload/${info.itemFile }" alt="First slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
                                         <a class="gallery_img" href="/img/product-img/pro-big-2.jpg">
-                                            <img class="d-block w-100" src="/img/product-img/pro-big-2.jpg" alt="Second slide">
+                                            <img class="d-block w-100" src="/upload/${info.detail1 }" alt="Second slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
                                         <a class="gallery_img" href="/img/product-img/pro-big-3.jpg">
-                                            <img class="d-block w-100" src="/img/product-img/pro-big-3.jpg" alt="Third slide">
+                                            <img class="d-block w-100" src="/upload/${info.detail2 }" alt="Third slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
                                         <a class="gallery_img" href="/img/product-img/pro-big-4.jpg">
-                                            <img class="d-block w-100" src="/img/product-img/pro-big-4.jpg" alt="Fourth slide">
+                                            <img class="d-block w-100" src="/upload/${info.itemFile }" alt="Fourth slide">
                                         </a>
                                     </div>
                                 </div>
